@@ -1,0 +1,115 @@
+{
+  "updated": "2026-10-14",
+  "sources": [
+    "vidIQ niche RPM data",
+    "Influencer Marketing Hub creator surveys 2026",
+    "Mediacube / Lenos creator benchmarks 2026",
+    "platform official documentation (YouTube Partner Program, Twitch Bits, TikTok Creator Rewards)"
+  ],
+  "youtube_long_form": {
+    "personal_finance_investing": [
+      5.0,
+      17.0
+    ],
+    "technology_reviews": [
+      5.0,
+      12.0
+    ],
+    "education_howto": [
+      4.0,
+      10.0
+    ],
+    "business_marketing": [
+      4.0,
+      12.0
+    ],
+    "gaming": [
+      2.0,
+      7.0
+    ],
+    "entertainment_vlogs": [
+      1.0,
+      4.0
+    ],
+    "lifestyle_beauty": [
+      1.5,
+      6.0
+    ],
+    "music": [
+      0.5,
+      1.5
+    ]
+  },
+  "youtube_shorts": {
+    "low": 0.02,
+    "high": 0.15,
+    "typical": 0.06
+  },
+  "tiktok_creator_rewards": {
+    "low": 0.04,
+    "high": 1.0,
+    "typical": 0.4,
+    "notes": "按合格播放计（非全部播放）；创作者后台 RPM 为准"
+  },
+  "instagram_reels": {
+    "low": 0.03,
+    "high": 0.3,
+    "typical": 0.1
+  },
+  "twitch": {
+    "bits_rate_per_bit": 0.01,
+    "sub_tier1_monthly": 2.5,
+    "sub_tier2_monthly": 5.0,
+    "sub_tier3_monthly": 12.5,
+    "ad_cpm": [
+      3.5,
+      10.0
+    ],
+    "bits_packs": [
+      [
+        25000,
+        308.0
+      ],
+      [
+        10000,
+        126.0
+      ],
+      [
+        5000,
+        64.4
+      ],
+      [
+        1500,
+        19.95
+      ],
+      [
+        500,
+        7.0
+      ],
+      [
+        100,
+        1.4
+      ]
+    ],
+    "notes": "Bits 主播实收固定 $0.01/Bit；订阅按标准分成估算；移动端购买加约 30%"
+  },
+  "country_multipliers": {
+    "worldwide": 1.0,
+    "us": 4.3,
+    "uk": 3.9,
+    "canada": 3.4,
+    "australia": 3.1,
+    "germany": 2.9,
+    "france": 2.4,
+    "japan": 2.2,
+    "brazil": 0.8,
+    "india": 0.24,
+    "indonesia": 0.2,
+    "vietnam": 0.18
+  },
+  "platform_share": {
+    "youtube_long_form_creator": 55,
+    "youtube_shorts_creator": 45,
+    "twitch_sub_creator_standard": 50
+  }
+}

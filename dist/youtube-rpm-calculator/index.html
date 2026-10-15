@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube RPM Calculator — Revenue Per 1,000 Views (2026)</title>
+<meta name="description" content="Convert YouTube RPM to monthly earnings and reverse. RPM benchmarks by niche, US audience multipliers, and how to raise your revenue per 1,000 views.">
+<link rel="canonical" href="https://creatorpaycalc.com/youtube-rpm-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CreatorPayCalc">
+<meta property="og:title" content="YouTube RPM Calculator — Revenue Per 1,000 Views (2026)">
+<meta property="og:description" content="Convert YouTube RPM to monthly earnings and reverse. RPM benchmarks by niche, US audience multipliers, and how to raise your revenue per 1,000 views.">
+<meta property="og:url" content="https://creatorpaycalc.com/youtube-rpm-calculator/">
+<link rel="stylesheet" href="/css/site.css?v=20261014">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "YouTube RPM Calculator", "url": "https://creatorpaycalc.com/youtube-rpm-calculator/", "applicationCategory": "FinanceApplication", "description": "Convert YouTube RPM to monthly earnings and reverse-calculate views."}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">CreatorPayCalc <span class="brand-sub">creator earnings hub</span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/">Tools</a></li><li><a href="/youtube-money-calculator/">YouTube Money</a></li><li><a href="/twitch-bits-to-usd/">Twitch Bits</a></li><li><a href="/views-to-money-calculator/">Views to Money</a></li><li><a href="/cpm-vs-rpm/">RPM vs CPM</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+<h1>YouTube RPM Calculator</h1>
+
+<p>RPM (revenue per mille) is the single most useful number in a YouTube channel: <strong>what you earn per
+1,000 views after YouTube's 45% share</strong>. This calculator converts RPM ↔ earnings in both directions.
+(Not an engine RPM calculator — that's a different tool entirely.)</p>
+
+<h2>YouTube RPM Calculator</h2>
+<div class="calc">
+  <label for="rpm_views">Monthly views</label>
+  <input id="rpm_views" type="text" value="200000" oninput="calcRpm()">
+  <label for="rpm_rate">RPM (USD per 1,000 views)</label>
+  <input id="rpm_rate" type="text" value="8.00" oninput="calcRpm()">
+  <p class="calc-out" id="rpm_out">$1,600.00</p>
+  <p class="calc-line" id="rpm_eff">RPM: $8.00 per 1,000 views · 200,000 views</p>
+  <p class="calc-line">Views needed for $5,000/month: <strong id="rpm_need">625,000</strong></p>
+</div>
+
+<h2>Worked examples (server-rendered)</h2>
+<table>
+  <thead><tr><th>Scenario</th><th>Views</th><th>RPM</th><th>Monthly earnings</th></tr></thead>
+  <tbody>
+    <tr><td>Gaming channel</td><td>200,000</td><td>$8.00</td><td>$1,600.00</td></tr>
+    <tr><td>Finance channel</td><td>100,000</td><td>$15.00</td><td>$1,500.00</td></tr>
+    <tr><td>Target $5,000/mo at $8 RPM</td><td>—</td><td>$8.00</td><td>needs 625,000 views</td></tr>
+  </tbody>
+</table>
+
+<h2>RPM by niche (2026, creator share)</h2>
+<table>
+  <thead><tr><th>Niche</th><th>RPM range (long-form)</th></tr></thead>
+  <tbody>
+    <tr><td>Personal finance & investing</td><td>$5–$17</td></tr><tr><td>Tech reviews & tutorials</td><td>$5–$12</td></tr><tr><td>Education & how-to</td><td>$4–$10</td></tr><tr><td>Business & marketing</td><td>$4–$12</td></tr><tr><td>Gaming</td><td>$2–$7</td></tr><tr><td>Entertainment & vlogs</td><td>$1–$4</td></tr><tr><td>Lifestyle & beauty</td><td>$1.5–$6</td></tr><tr><td>Music</td><td>$0.5–$1.5</td></tr>
+  </tbody>
+</table>
+
+<h2>How to raise your RPM</h2>
+<ul>
+  <li><strong>Audience geography:</strong> US/UK/CA/AU viewers are worth 3–4× the worldwide average (see <a href="/cpm-vs-rpm/">RPM vs CPM</a> for multipliers).</li>
+  <li><strong>Niche:</strong> finance, tech and B2B niches command 3–8× entertainment RPM.</li>
+  <li><strong>Monetization:</strong> 8+ minute videos unlock mid-roll ads and lift RPM 30–60%.</li>
+  <li><strong>Seasonality:</strong> Q4 CPMs run 30–80% above Q1.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<h3>What is a good RPM on YouTube?</h3>
+<p>For long-form, under $2 is weak, $2–$5 is typical, $5–$10 is strong, $15+ is exceptional and niche-driven
+(finance, tech, US audiences). Shorts RPM is structurally lower ($0.02–$0.15).</p>
+<h3>How do I find my RPM?</h3>
+<p>YouTube Studio → Analytics → Revenue. That number is already your creator-share RPM; divide by 1,000 for
+per-view.</p>
+
+<h2>Related tools</h2>
+<ul>
+  <li><a href="/youtube-money-calculator/">YouTube Money Calculator</a></li>
+  <li><a href="/views-to-money-calculator/">Views to Money Calculator</a></li>
+  <li><a href="/cpm-vs-rpm/">RPM vs CPM explained</a></li>
+</ul>
+
+<script>
+function mulStr(a,b){ /* decimal-string multiplication (6-dp precision) */
+  const fa=BigInt((a.split('.')[1]||'').padEnd(6,'0')); const ia=BigInt((a.split('.')[0]||'0')||'0');
+  const fb=BigInt((b.split('.')[1]||'').padEnd(6,'0')); const ib=BigInt((b.split('.')[0]||'0')||'0');
+  const ra=ia*1000000n+fa, rb=ib*1000000n+fb;
+  const r=ra*rb/1000000000000n;
+  return (r/1000000n).toString()+'.'+String(r%1000000n).padStart(6,'0').slice(0,2);
+}
+function fmtUSD(x){ const n=Number(x); return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function fmtNum(x){ return Number(x).toLocaleString('en-US'); }
+function calcRpm(){ const v=document.getElementById('rpm_views').value.replace(/[^\d]/g,'')||'0';
+  const r=document.getElementById('rpm_rate').value.replace(/[^\d.]/g,'')||'0';
+  const e=(Number(v)/1000)*Number(r);
+  document.getElementById('rpm_out').textContent=fmtUSD(e);
+  document.getElementById('rpm_eff').textContent='RPM: '+fmtUSD(r)+' per 1,000 views · '+fmtNum(v)+' views';
+  const need=(1000/Number(r))*1000; document.getElementById('rpm_need').textContent=fmtNum(Math.ceil(need)); }
+function calcBits(){ const b=document.getElementById('bits_count').value.replace(/[^\d]/g,'')||'0';
+  const stream=(Number(b)*0.01);
+  const packs=[[25000,308],[10000,126],[5000,64.4],[1500,19.95],[500,7],[100,1.4]];
+  let rem=Number(b), cost=0, mix=[];
+  for(const [sz,pr] of packs){ if(rem<=0)break; const c=Math.floor(rem/sz); if(c){mix.push(c+'x '+sz.toLocaleString()); cost+=pr*c; rem-=sz*c;} }
+  if(rem>0){mix.push('1x 100'); cost+=1.4;}
+  document.getElementById('bits_streamer').textContent=fmtUSD(stream);
+  document.getElementById('bits_viewer').textContent=fmtUSD(cost)+' ('+mix.join(' + ')+')';
+  document.getElementById('bits_twitch').textContent=fmtUSD(cost-stream); }
+function calcViews(){ const t=document.getElementById('v2m_target').value.replace(/[^\d.]/g,'')||'0';
+  const r=document.getElementById('v2m_rpm').value.replace(/[^\d.]/g,'')||'0';
+  const need=(Number(t)/Number(r))*1000;
+  document.getElementById('v2m_out').textContent=fmtNum(Math.ceil(need));
+  document.getElementById('v2m_line').textContent='At '+fmtUSD(r)+' RPM, '+fmtUSD(t)+' needs about '+fmtNum(Math.ceil(need))+' views.'; }
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>CreatorPayCalc — free creator earnings calculators. Estimates are planning ranges, not guaranteed payouts.
+       Data sources and update dates are disclosed on each page.</p>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="/">Tools</a></li><li><a href="/youtube-money-calculator/">YouTube Money</a></li><li><a href="/twitch-bits-to-usd/">Twitch Bits</a></li><li><a href="/views-to-money-calculator/">Views to Money</a></li><li><a href="/cpm-vs-rpm/">RPM vs CPM</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms-of-service">Terms of Service &amp; Earnings Disclaimers</a></li><li><a href="/about">About Us &amp; Methodology</a></li><li><a href="/contact">Contact Us</a></li>
+        <li><a href="/sitemap.xml">Sitemap</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

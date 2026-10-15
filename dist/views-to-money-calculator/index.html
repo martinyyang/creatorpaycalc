@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Views to Money Calculator — How Many Views Make $1,000? (2026)</title>
+<meta name="description" content="Free views to money calculator: estimate earnings from views and RPM, or work backwards from a target income. Long-form vs Shorts benchmarks included.">
+<link rel="canonical" href="https://creatorpaycalc.com/views-to-money-calculator/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CreatorPayCalc">
+<meta property="og:title" content="Views to Money Calculator — How Many Views Make $1,000? (2026)">
+<meta property="og:description" content="Free views to money calculator: estimate earnings from views and RPM, or work backwards from a target income. Long-form vs Shorts benchmarks included.">
+<meta property="og:url" content="https://creatorpaycalc.com/views-to-money-calculator/">
+<link rel="stylesheet" href="/css/site.css?v=20261014">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Views to Money Calculator", "url": "https://creatorpaycalc.com/views-to-money-calculator/", "applicationCategory": "FinanceApplication", "description": "Estimate content earnings from views and RPM, or reverse-calculate the views needed for a target income."}</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">CreatorPayCalc <span class="brand-sub">creator earnings hub</span></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="/">Tools</a></li><li><a href="/youtube-money-calculator/">YouTube Money</a></li><li><a href="/twitch-bits-to-usd/">Twitch Bits</a></li><li><a href="/views-to-money-calculator/">Views to Money</a></li><li><a href="/cpm-vs-rpm/">RPM vs CPM</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+<h1>Views to Money Calculator</h1>
+
+<p>How much are your views actually worth? Enter a view count and a per-thousand rate (RPM), and this
+calculator estimates earnings — or flip it: tell it how much you want to earn and it works out the views.</p>
+
+<h2>Views to Money Calculator</h2>
+<div class="calc">
+  <label for="v2m_target">Target monthly earnings ($)</label>
+  <input id="v2m_target" type="text" value="1000" oninput="calcViews()">
+  <label for="v2m_rpm">RPM (USD per 1,000 views)</label>
+  <input id="v2m_rpm" type="text" value="5.00" oninput="calcViews()">
+  <p class="calc-out" id="v2m_out">200,000</p>
+  <p class="calc-line" id="v2m_line">At $5.00 RPM, $1,000 needs about 200,000 views.</p>
+</div>
+
+<h2>Worked examples (server-rendered)</h2>
+<table>
+  <thead><tr><th>Views</th><th>RPM</th><th>Earnings</th></tr></thead>
+  <tbody>
+    <tr><td>100,000</td><td>$5.00</td><td>$500.00</td></tr>
+    <tr><td>1,000,000</td><td>$5.00</td><td>$5,000.00</td></tr>
+    <tr><td>$1,000 target</td><td>$5.00</td><td>200,000 views</td></tr>
+  </tbody>
+</table>
+
+<h2>Long-form vs Shorts</h2>
+<p>Long-form video (YouTube) keeps 55% of ad revenue and typically pays $1–$17 RPM by niche. Shorts run on a
+pooled model around <strong>$0.02–$0.15 per 1,000 views</strong> — 30 to 100 times less. TikTok Creator
+Rewards and Instagram Reels sit in a similar short-form range. Pick your platform's effective per-thousand
+rate and the formula works anywhere.</p>
+
+<h2>How to find your real RPM</h2>
+<p>YouTube Studio → Analytics → Revenue shows your actual RPM. TikTok's Creator Rewards dashboard shows its
+per-1,000-qualified-views rate. Replace the benchmark with your real number for an exact figure.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>How many views do I need to make $1,000 a month?</h3>
+<p>Divide $1,000 by your RPM and multiply by 1,000. At a $5 RPM that's 200,000 monthly views; at a $15
+finance-tier RPM, about 67,000.</p>
+<h3>Does this work for TikTok or Instagram?</h3>
+<p>Yes — the math is platform-agnostic: views × your per-thousand rate ÷ 1,000. Just enter that platform's
+effective rate, which is far lower than YouTube long-form.</p>
+
+<h2>Related tools</h2>
+<ul>
+  <li><a href="/youtube-money-calculator/">YouTube Money Calculator</a></li>
+  <li><a href="/cpm-vs-rpm/">RPM vs CPM explained</a></li>
+</ul>
+
+<script>
+function mulStr(a,b){ /* decimal-string multiplication (6-dp precision) */
+  const fa=BigInt((a.split('.')[1]||'').padEnd(6,'0')); const ia=BigInt((a.split('.')[0]||'0')||'0');
+  const fb=BigInt((b.split('.')[1]||'').padEnd(6,'0')); const ib=BigInt((b.split('.')[0]||'0')||'0');
+  const ra=ia*1000000n+fa, rb=ib*1000000n+fb;
+  const r=ra*rb/1000000000000n;
+  return (r/1000000n).toString()+'.'+String(r%1000000n).padStart(6,'0').slice(0,2);
+}
+function fmtUSD(x){ const n=Number(x); return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function fmtNum(x){ return Number(x).toLocaleString('en-US'); }
+function calcRpm(){ const v=document.getElementById('rpm_views').value.replace(/[^\d]/g,'')||'0';
+  const r=document.getElementById('rpm_rate').value.replace(/[^\d.]/g,'')||'0';
+  const e=(Number(v)/1000)*Number(r);
+  document.getElementById('rpm_out').textContent=fmtUSD(e);
+  document.getElementById('rpm_eff').textContent='RPM: '+fmtUSD(r)+' per 1,000 views · '+fmtNum(v)+' views';
+  const need=(1000/Number(r))*1000; document.getElementById('rpm_need').textContent=fmtNum(Math.ceil(need)); }
+function calcBits(){ const b=document.getElementById('bits_count').value.replace(/[^\d]/g,'')||'0';
+  const stream=(Number(b)*0.01);
+  const packs=[[25000,308],[10000,126],[5000,64.4],[1500,19.95],[500,7],[100,1.4]];
+  let rem=Number(b), cost=0, mix=[];
+  for(const [sz,pr] of packs){ if(rem<=0)break; const c=Math.floor(rem/sz); if(c){mix.push(c+'x '+sz.toLocaleString()); cost+=pr*c; rem-=sz*c;} }
+  if(rem>0){mix.push('1x 100'); cost+=1.4;}
+  document.getElementById('bits_streamer').textContent=fmtUSD(stream);
+  document.getElementById('bits_viewer').textContent=fmtUSD(cost)+' ('+mix.join(' + ')+')';
+  document.getElementById('bits_twitch').textContent=fmtUSD(cost-stream); }
+function calcViews(){ const t=document.getElementById('v2m_target').value.replace(/[^\d.]/g,'')||'0';
+  const r=document.getElementById('v2m_rpm').value.replace(/[^\d.]/g,'')||'0';
+  const need=(Number(t)/Number(r))*1000;
+  document.getElementById('v2m_out').textContent=fmtNum(Math.ceil(need));
+  document.getElementById('v2m_line').textContent='At '+fmtUSD(r)+' RPM, '+fmtUSD(t)+' needs about '+fmtNum(Math.ceil(need))+' views.'; }
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <p>CreatorPayCalc — free creator earnings calculators. Estimates are planning ranges, not guaranteed payouts.
+       Data sources and update dates are disclosed on each page.</p>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="/">Tools</a></li><li><a href="/youtube-money-calculator/">YouTube Money</a></li><li><a href="/twitch-bits-to-usd/">Twitch Bits</a></li><li><a href="/views-to-money-calculator/">Views to Money</a></li><li><a href="/cpm-vs-rpm/">RPM vs CPM</a></li>
+        <li><a href="/privacy-policy">Privacy Policy</a></li><li><a href="/terms-of-service">Terms of Service &amp; Earnings Disclaimers</a></li><li><a href="/about">About Us &amp; Methodology</a></li><li><a href="/contact">Contact Us</a></li>
+        <li><a href="/sitemap.xml">Sitemap</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
